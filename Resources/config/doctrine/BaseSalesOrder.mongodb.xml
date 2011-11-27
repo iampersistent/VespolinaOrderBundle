@@ -6,7 +6,10 @@
 
     <mapped-superclass name="Vespolina\OrderBundle\Document\BaseSalesOrder" collection="vespolina_sales_orders">
 
+        <field name="id" fieldName="id" id="true" strategy="INCREMENT" />
+
         <field name="createdAt" fieldName="createdAt" type="date" />
+        <field name="customerComment" fieldName="customerComment" type="string" />
         <field name="customerId" fieldName="customerId" type="string" />
         <field name="orderDate" fieldName="orderDate" type="date" />
         <field name="orderState" fieldName="orderState" type="string" />
@@ -14,6 +17,18 @@
         <field name="type" fieldName="type" type="string" />
         <field name="updatedAt" fieldName="updatedAt" type="date" />
 
+        <embed-many fieldName="items"
+                    field="items"
+                    targetDocument="Vespolina\OrderBundle\Document\SalesOrderItem"
+                    strategy="set"/>
+        <embed-one fieldName="fulfillmentAgreement"
+                    field="fulfillmentAgreement"
+                    targetDocument="Vespolina\OrderBundle\Document\FulfillmentAgreement"/>
+        <embed-one fieldName="paymentAgreement"
+                    field="paymentAgreement"
+                    targetDocument="Vespolina\OrderBundle\Document\PaymentAgreement"/>
+
+        
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="incrementCreatedAt" />
             <lifecycle-callback type="preUpdate" method="incrementUpdatedAt" />
