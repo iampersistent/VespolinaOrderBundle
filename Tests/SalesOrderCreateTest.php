@@ -62,8 +62,8 @@ class OrderDocumentCreateTest extends WebTestCase
         //Item data
         $salesOrderItem1 = $salesOrderManager->createItem($salesOrder);
 
-        $productA = $this->getMockForAbstractClass('Vespolina\ProductBundle\Model\Product');
-        $productB = $this->getMockForAbstractClass('Vespolina\ProductBundle\Model\Product');
+        $productA = $this->createProduct();
+        $productB = $this->createProduct();
 
         $salesOrderItem1->setProduct($productA);
         $salesOrderItem1->setOrderedQuantity(10);
@@ -95,5 +95,35 @@ class OrderDocumentCreateTest extends WebTestCase
         $customer->setCustomerId('ABC10000');
 
         return $customer;
+    }
+
+    protected function createProduct()
+    {
+        $product = $this->getMock('Vespolina\ProductBundle\Model\Product', array('createProductIdentifierSet'), array('ProductIdentifierSet'));
+        $product->expects($this->any())
+            ->method('createProductIdentifierSet')
+            ->withAnyParameters()
+            ->will($this->returnCallback(array($this, 'createProductIdentifierSetCallback')));
+
+        $pis = $this->createProductIdentifierSet(array('primary' => 'primary'));
+
+        $ip = new \ReflectionProperty('Vespolina\ProductBundle\Model\Product', 'identifiers');
+        $ip->setAccessible(true);
+        $identifiers = $ip->getValue($product);
+        $identifiers->set('primary:primary;', $pis);
+        $ip->setValue($product, $identifiers);
+
+        return $product;
+    }
+
+    protected function createProductIdentifierSet($options)
+    {
+        $pis = $this->getMock('Vespolina\ProductBundle\Model\Identifier\ProductIdentifierSet', null, array($options), '', false);
+
+        $op = new \ReflectionProperty('Vespolina\ProductBundle\Model\Identifier\ProductIdentifierSet', 'options');
+        $op->setAccessible(true);
+        $op->setValue($pis, $options);
+
+        return $pis;
     }
 }
