@@ -58,6 +58,7 @@ class OrderDocumentCreateTest extends WebTestCase
         $fulfillmentAgreement->setServiceLevel('express_delivery');
 
         $salesOrder->setFulfillmentAgreement($fulfillmentAgreement);
+        $salesOrder->setCustomerComment('Hey, If possible can I get a free bag?')
 
         //Item data
         $salesOrderItem1 = $salesOrderManager->createItem($salesOrder);
@@ -69,7 +70,7 @@ class OrderDocumentCreateTest extends WebTestCase
         $salesOrderItem1->setOrderedQuantity(10);
         $salesOrderItem1->setCustomerComment('please deliver one with a green print');
         $salesOrderItem1->setCustomerProductReference('PROMO_2012_T_SHIRT_CUSTOM_COLOR');
-        $salesOrderItem1->setItemState('shipped');
+        $salesOrderItem1->setItemState('open');
 
         $this->assertEquals(count($salesOrder->getItems()), 1);
         $this->assertEquals(($salesOrderItem1->getOrderedQuantity()), 10);
@@ -84,6 +85,9 @@ class OrderDocumentCreateTest extends WebTestCase
 
 
         $salesOrderManager->updateSalesOrder($salesOrder);
+
+
+        $this->assertNotEmpty($salesOrder->getId());
     }
 
     protected function createCustomer()
