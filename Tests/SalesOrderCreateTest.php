@@ -58,7 +58,7 @@ class OrderDocumentCreateTest extends WebTestCase
         $fulfillmentAgreement->setServiceLevel('express_delivery');
 
         $salesOrder->setFulfillmentAgreement($fulfillmentAgreement);
-        $salesOrder->setCustomerComment('Hey, If possible can I get a free bag?')
+        $salesOrder->setCustomerComment('Hey, If possible can I get a free bag?');
 
         //Item data
         $salesOrderItem1 = $salesOrderManager->createItem($salesOrder);
