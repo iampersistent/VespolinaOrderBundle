@@ -103,31 +103,9 @@ class OrderDocumentCreateTest extends WebTestCase
 
     protected function createProduct()
     {
-        $product = $this->getMock('Vespolina\ProductBundle\Model\Product', array('createProductIdentifierSet'), array('ProductIdentifierSet'));
-        $product->expects($this->any())
-            ->method('createProductIdentifierSet')
-            ->withAnyParameters()
-            ->will($this->returnCallback(array($this, 'createProductIdentifierSetCallback')));
+        $product = $this->getKernel()->getContainer()->get('vespolina.product_manager')->createProduct();
 
-        $pis = $this->createProductIdentifierSet(array('primary' => 'primary'));
-
-        $ip = new \ReflectionProperty('Vespolina\ProductBundle\Model\Product', 'identifiers');
-        $ip->setAccessible(true);
-        $identifiers = $ip->getValue($product);
-        $identifiers->set('primary:primary;', $pis);
-        $ip->setValue($product, $identifiers);
 
         return $product;
-    }
-
-    protected function createProductIdentifierSet($options)
-    {
-        $pis = $this->getMock('Vespolina\ProductBundle\Model\Identifier\ProductIdentifierSet', null, array($options), '', false);
-
-        $op = new \ReflectionProperty('Vespolina\ProductBundle\Model\Identifier\ProductIdentifierSet', 'options');
-        $op->setAccessible(true);
-        $op->setValue($pis, $options);
-
-        return $pis;
     }
 }
