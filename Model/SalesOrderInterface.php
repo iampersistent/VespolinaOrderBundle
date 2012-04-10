@@ -8,7 +8,7 @@
  
 namespace Vespolina\OrderBundle\Model;
 
-use Vespolina\CustomerBundle\Model\CustomerInterface;
+use Vespolina\PartnerBundle\Model\PartnerInterface;
 use Vespolina\OrderBundle\Model\FulfillmentAgreementInterface;
 use Vespolina\OrderBundle\Model\PaymentAgreementInterface;
 use Vespolina\OrderBundle\Model\SalesOrderItemInterface;
@@ -109,7 +109,7 @@ interface SalesOrderInterface
      * @param $customer
      * @return void
      */
-    function setCustomer(CustomerInterface $customer);
+    function setCustomer(PartnerInterface $customer);
 
     /**
      * Set a customer comment

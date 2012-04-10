@@ -8,7 +8,7 @@
 
 namespace Vespolina\OrderBundle\Model;
 
-use Vespolina\CustomerBundle\Model\CustomerInterface;
+use Vespolina\PartnerBundle\Model\PartnerInterface;
 use Vespolina\OrderBundle\Model\FulfillmentAgreementInterface;
 use Vespolina\OrderBundle\Model\PaymentAgreementInterface;
 use Vespolina\OrderBundle\Model\SalesOrderInterface;
@@ -165,7 +165,7 @@ abstract class SalesOrder implements SalesOrderInterface
     /**
      * @inheritdoc
      */
-    public function setCustomer(CustomerInterface $customer)
+    public function setCustomer(PartnerInterface $customer)
     {
 
         $this->customer = $customer;
