@@ -16,6 +16,7 @@
         <field name="salesChannel" fieldName="salesChannel" type="string" />
         <field name="type" fieldName="type" type="string" />
         <field name="updatedAt" fieldName="updatedAt" type="date" />
+        <field name="pricingSetData" fieldName="pricingSetData" type="hash" />
 
         <embed-many fieldName="items"
                     field="items"
@@ -30,6 +31,7 @@
 
         
         <lifecycle-callbacks>
+            <lifecycle-callback type="postLoad"   method="postLoadSalesOrder" />
             <lifecycle-callback type="prePersist" method="incrementCreatedAt" />
             <lifecycle-callback type="preUpdate" method="incrementUpdatedAt" />
         </lifecycle-callbacks>

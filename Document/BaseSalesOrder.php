@@ -7,6 +7,7 @@
  */
 namespace Vespolina\OrderBundle\Document;
 
+use Vespolina\CartBundle\Pricing\PricingSet;    //Todo: remove Cart bundle dependency
 use Vespolina\OrderBundle\Model\SalesOrder as AbstractSalesOrder;
 /**
  * @author Daniel Kucharski <daniel@xerias.be>
@@ -14,6 +15,7 @@ use Vespolina\OrderBundle\Model\SalesOrder as AbstractSalesOrder;
 abstract class BaseSalesOrder extends AbstractSalesOrder
 {
     protected $id;
+    protected $pricingSetData;
 
     public function getId()
     {
@@ -24,5 +26,16 @@ abstract class BaseSalesOrder extends AbstractSalesOrder
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function postLoadSalesOrder()
+    {
+        $this->pricingSet = new PricingSet();
+        $this->pricingSet->setAll($this->pricingSetData);
+    }
+
+    public function prePersistSalesOrder()
+    {
+        $this->pricingSetData = $this->pricingSet->all();
     }
 }

@@ -11,11 +11,17 @@
         <field name="customerProductReference" fieldName="customerProductReference" type="string" />
         <field name="itemNumber" fieldName="itemNumber" type="int" />
         <field name="itemState" fieldName="itemState" type="string" />
+        <field name="pricingSetData" fieldName="pricingSetData" type="hash" />
 
         <field name="orderedQuantity" fieldName="orderedQuantity" type="string" />
         <field name="productName" fieldName="productName" type="string" />
         <field name="updatedAt" fieldName="updatedAt" type="date" />
-        
+        <reference-one fieldName="product" field="product" />
+        <lifecycle-callbacks>
+            <lifecycle-callback type="postLoad"   method="postLoadSalesOrderItem" />
+            <lifecycle-callback type="prePersist" method="prePersistSalesOrderItem" />
+        </lifecycle-callbacks>
+
     </mapped-superclass>
 
 </doctrine-mongo-mapping>

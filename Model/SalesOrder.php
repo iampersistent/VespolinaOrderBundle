@@ -171,7 +171,7 @@ abstract class SalesOrder implements SalesOrderInterface
         $this->customer = $customer;
         if ($customer) {
 
-            $this->customerId = $customer->getCustomerId();
+            $this->customerId = $customer->getId();
         }
 
     }

@@ -4,7 +4,7 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <document name="Vespolina\OrderBundle\Document\SalesOrder">
+    <document name="Vespolina\OrderBundle\Document\SalesOrder" collection="vespolina_sales_orders">
 
  
     </document>
