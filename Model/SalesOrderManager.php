@@ -19,13 +19,32 @@ use Vespolina\OrderBundle\Model\SalesOrderManagerInterface;
 class SalesOrderManager {
 
     protected $container;
+    protected $fulfillmentAgreementClass;
+    protected $paymentAgreementClass;
+    protected $salesOrderClass;
 
-    public function __construct(Container $container) {
+    public function __construct(Container $container, $salesOrderClass, $fulfillmentAgreementClass, $paymentAgreementClass) {
 
         $this->container = $container;
+        $this->fulfillmentAgreementClass = $fulfillmentAgreementClass;
+        $this->paymentAgreementClass = $paymentAgreementClass;
+        $this->salesOrderClass = $salesOrderClass;
+
     }
 
+    public function createFulfillmentAgreement()
+    {
+        $fulfillmentAgreement = new $this->fulfillmentAgreementClass();
 
+        return $fulfillmentAgreement;
+    }
+
+    public function createPaymentAgreement()
+    {
+        $paymentAgreement = new $this->paymentAgreementClass();
+
+        return $paymentAgreement;
+    }
 
     public function init(SalesOrderInterface $salesOrder) {
         

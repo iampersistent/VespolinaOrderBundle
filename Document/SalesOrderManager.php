@@ -22,13 +22,17 @@ class SalesOrderManager extends BaseSalesOrderManager
     protected $dm;
     protected $primaryIdentifier;
     protected $salesOrderRepo;
-    
-    public function __construct(Container $container)
+
+    public function __construct($container,
+                                $salesOrderClass = 'Vespolina\OrderBundle\Document\SalesOrder',
+                                $fulfillmentAgreementClass = 'Vespolina\OrderBundle\Document\FulfillmentAgreement',
+                                $paymentAgreementClass = 'Vespolina\OrderBundle\Document\PaymentAgreement'
+                                )
     {
         $this->dm = $container->get('doctrine.odm.mongodb.default_document_manager');
         $this->salesOrderRepo = $this->dm->getRepository('Vespolina\OrderBundle\Document\SalesOrder'); // TODO make configurable
 
-        parent::__construct($container);
+        parent::__construct($container, $salesOrderClass, $fulfillmentAgreementClass, $paymentAgreementClass);
     }
 
     /**
@@ -42,7 +46,6 @@ class SalesOrderManager extends BaseSalesOrderManager
 
         return $salesOrder;
     }
-
 
     /**
      * @inheritdoc
