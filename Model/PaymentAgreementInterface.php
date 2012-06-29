@@ -8,7 +8,7 @@
 
 namespace Vespolina\OrderBundle\Model;
 
-use Vespolina\ProductBundle\Model\ProductInterface;
+use Vespolina\Entity\ProductInterface;
 
 /**
  * @author Daniel Kucharski <daniel@xerias.be>
