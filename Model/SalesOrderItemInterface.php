@@ -9,7 +9,7 @@
 namespace Vespolina\OrderBundle\Model;
 
 use Vespolina\PricingBundle\Model\PriceableInterface;
-use Vespolina\ProductBundle\Model\ProductInterface;
+use Vespolina\Entity\ProductInterface;
 
 /**
  * @author Daniel Kucharski <daniel@xerias.be>
@@ -114,7 +114,7 @@ interface SalesOrderItemInterface {
      * Set product which needs to be associated to this order item
      *
      * @abstract
-     * @param \Vespolina\ProductBundle\Model\ProductInterface $product
+     * @param \Vespolina\Entity\ProductInterface $product
      * @return void
      */
     function setProduct(ProductInterface $product);
