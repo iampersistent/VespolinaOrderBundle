@@ -1,6 +1,6 @@
 <?php
 /**
- * (c) Vespolina Project http://www.vespolina-project.org
+ * (c) 2012 Vespolina Project http://www.vespolina-project.org
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -9,9 +9,9 @@ namespace Vespolina\OrderBundle\Document;
 
 use Symfony\Component\DependencyInjection\Container;
 
+use Vespolina\Entity\ItemInterface;
+use Vespolina\Entity\OrderInterface;
 use Vespolina\OrderBundle\Document\SalesOrder;
-use Vespolina\OrderBundle\Model\SalesOrderInterface;
-use Vespolina\OrderBundle\Model\SalesOrderItemInterface;
 use Vespolina\OrderBundle\Model\SalesOrderManager as BaseSalesOrderManager;
 /**
  * @author Daniel Kucharski <daniel@xerias.be>
@@ -50,7 +50,7 @@ class SalesOrderManager extends BaseSalesOrderManager
     /**
      * @inheritdoc
      */
-    public function createItem(SalesOrderInterface $salesOrder) {
+    public function createItem(OrderInterface $salesOrder) {
 
        $salesOrderItem = new SalesOrderItem();
        $this->initItem($salesOrderItem);
@@ -89,7 +89,7 @@ class SalesOrderManager extends BaseSalesOrderManager
     /**
      * @inheritdoc
      */
-    public function updateSalesOrder(SalesOrderInterface $salesOrder, $andFlush = true)
+    public function updateSalesOrder(OrderInterface $salesOrder, $andFlush = true)
     {
         $this->dm->persist($salesOrder);
         if ($andFlush) {

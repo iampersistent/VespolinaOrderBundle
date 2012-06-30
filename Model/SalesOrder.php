@@ -8,24 +8,22 @@
 
 namespace Vespolina\OrderBundle\Model;
 
+use Vespolina\Entity\Order as CoreOrder;
 use Vespolina\PartnerBundle\Model\PartnerInterface;
 use Vespolina\OrderBundle\Model\FulfillmentAgreementInterface;
 use Vespolina\OrderBundle\Model\PaymentAgreementInterface;
-use Vespolina\OrderBundle\Model\SalesOrderInterface;
-use Vespolina\OrderBundle\Model\SalesOrderItemInterface;
 use Vespolina\PricingBundle\Model\PricingSetInterface;
 
 /**
  * @author Daniel Kucharski <daniel@xerias.be>
  */
-abstract class SalesOrder implements SalesOrderInterface
+abstract class SalesOrder extends CoreOrder
 {
     protected $createdAt;
     protected $customer;
     protected $customerId;
     protected $customerComment;
     protected $fulfillmentAgreement;
-    protected $items;
     protected $orderDate;
     protected $orderState;
     protected $paymentAgreement;
@@ -35,20 +33,7 @@ abstract class SalesOrder implements SalesOrderInterface
 
     public function __construct()
     {
-
         $this->documentIdentifications = array();
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function addItem(SalesOrderItemInterface $item) {
-
-        $this->items[] = $item;
-
-        $item->setItemNumber(count($this->items));
-
     }
 
     /**
@@ -74,18 +59,7 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function getCustomerComment()
     {
-
         return $this->customerComment;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getItems()
-    {
-
-        return $this->items;
-
     }
 
     /**
@@ -93,7 +67,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function getOrderDate()
     {
-
         return $this->orderDate;
     }
 
@@ -102,7 +75,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function getOrderState()
     {
-
         return $this->orderState;
     }
 
@@ -111,7 +83,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function getPaymentAgreement()
     {
-
         return $this->paymentAgreement;
     }
 
@@ -120,7 +91,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function getPricingSet()
     {
-
         return $this->pricingSet;
     }
 
@@ -129,7 +99,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function getUpdatedAt()
     {
-
         return $this->updatedAt;
     }
 
@@ -138,7 +107,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function getSalesChannel()
     {
-
         return $this->salesChannel;
     }
 
@@ -167,13 +135,10 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setCustomer(PartnerInterface $customer)
     {
-
         $this->customer = $customer;
         if ($customer) {
-
             $this->customerId = $customer->getId();
         }
-
     }
 
 
@@ -182,7 +147,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setCustomerComment($customerComment)
     {
-
         $this->customerComment = $customerComment;
     }
 
@@ -191,7 +155,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setItemNumber($itemNumber)
     {
-
         $this->itemNumber = $itemNumber;
     }
 
@@ -200,7 +163,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setFulfillmentAgreement(FulfillmentAgreementInterface $fulfillmentAgreement)
     {
-
         $this->fulfillmentAgreement = $fulfillmentAgreement;
     }
 
@@ -210,7 +172,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setOrderDate($orderDate)
     {
-
         $this->orderDate = $orderDate;
     }
 
@@ -220,7 +181,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setOrderState($orderState)
     {
-
         $this->orderState = $orderState;
     }
     
@@ -230,7 +190,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setPaymentAgreement(PaymentAgreementInterface $paymentAgreement)
     {
-
         $this->paymentAgreement = $paymentAgreement;
     }
 
@@ -239,7 +198,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setPricingSet($pricingSet)
     {
-
         $this->pricingSet = $pricingSet;
     }
 
@@ -248,8 +206,6 @@ abstract class SalesOrder implements SalesOrderInterface
      */
     public function setSalesChannel($salesChannel)
     {
-
         $this->salesChannel = $salesChannel;
     }
-
 }
