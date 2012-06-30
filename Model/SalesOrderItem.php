@@ -1,7 +1,7 @@
 <?php
 
 /**
- * (c) Vespolina Project http://www.vespolina-project.org
+ * (c) 2012 Vespolina Project http://www.vespolina-project.org
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -9,13 +9,14 @@
 
 namespace Vespolina\OrderBundle\Model;
 
-use Vespolina\OrderBundle\Model\SalesOrderItemInterface;
+use Vespolina\Entity\Item as CoreItem;
+use Vespolina\Entity\ItemInterface;
 use Vespolina\Entity\ProductInterface;
 
 /**
  * @author Daniel Kucharski <daniel@xerias.be>
  */
-abstract class SalesOrderItem implements SalesOrderItemInterface
+abstract class SalesOrderItem extends CoreItem
 {
     protected $createdAt;
     protected $customerComment;
@@ -94,15 +95,6 @@ abstract class SalesOrderItem implements SalesOrderItemInterface
     /**
      * @inheritdoc
      */
-    public function getProduct()
-    {
-
-        return $this->product;
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function getProductName()
     {
 
@@ -143,7 +135,6 @@ abstract class SalesOrderItem implements SalesOrderItemInterface
      */
     public function setItemNumber($itemNumber)
     {
-
         $this->itemNumber = $itemNumber;
     }
 
@@ -152,7 +143,6 @@ abstract class SalesOrderItem implements SalesOrderItemInterface
      */
     public function setItemState($itemState)
     {
-
         $this->itemState = $itemState;
     }
 
@@ -178,13 +168,5 @@ abstract class SalesOrderItem implements SalesOrderItemInterface
     public function setProductName($productName)
     {
         $this->productName = $productName;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setProduct(ProductInterface $product)
-    {
-        $this->product = $product;
     }
 }

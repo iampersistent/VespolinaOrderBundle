@@ -9,8 +9,8 @@ namespace Vespolina\OrderBundle\Model;
 
 use Symfony\Component\DependencyInjection\Container;
 
-use Vespolina\OrderBundle\Model\SalesOrderInterface;
-use Vespolina\OrderBundle\Model\SalesOrderItemInterface;
+use Vespolina\Entity\OrderInterface;
+use Vespolina\Entity\ItemInterface;
 use Vespolina\OrderBundle\Model\SalesOrderManagerInterface;
 
 /**
@@ -46,11 +46,11 @@ class SalesOrderManager {
         return $paymentAgreement;
     }
 
-    public function init(SalesOrderInterface $salesOrder) {
+    public function init(OrderInterface $salesOrder) {
         
     }
 
-    public function initItem(SalesOrderItemInterface $salesOrder) {
+    public function initItem(ItemInterface $salesOrder) {
 
     }
 }
