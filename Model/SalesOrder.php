@@ -8,7 +8,7 @@
 
 namespace Vespolina\OrderBundle\Model;
 
-use Vespolina\Entity\Order as CoreOrder;
+use Vespolina\Entity\BaseOrder as CoreOrder;
 use Vespolina\PartnerBundle\Model\PartnerInterface;
 use Vespolina\OrderBundle\Model\FulfillmentAgreementInterface;
 use Vespolina\OrderBundle\Model\PaymentAgreementInterface;
