@@ -13,6 +13,6 @@ use Vespolina\PricingBundle\Model\PriceableInterface;
 /**
  * @author Daniel Kucharski <daniel@xerias.be>
  */
-interface SalesOrderManagerInterface extends PriceableInterface
+interface SalesOrderManagerInterface
 {
 }

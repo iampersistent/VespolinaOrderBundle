@@ -133,12 +133,9 @@ abstract class SalesOrder extends CoreOrder
     /**
      * @inheritdoc
      */
-    public function setCustomer(PartnerInterface $customer)
+    public function setCustomer($customer)
     {
         $this->customer = $customer;
-        if ($customer) {
-            $this->customerId = $customer->getId();
-        }
     }
 
 
