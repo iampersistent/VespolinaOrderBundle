@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="vespolina_order.sales_order_manipulator.class">Vespolina\OrderBundle\Util\SalesOrderManipulator</parameter>
+    </parameters>
+
+    <services>
+        <service id="vespolina_order.sales_order_manipulator" class="%vespolina_order.sales_order_manipulator.class%">
+            <argument type="service" id="vespolina_order.sales_order_manager"/>
+        </service>
+        <service id="vespolina.sales_order_manipulator" alias="vespolina_order.sales_order_manipulator" />
+    </services>
+</container>

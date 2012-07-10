@@ -19,7 +19,7 @@ use Vespolina\OrderBundle\Model\SalesOrderManagerInterface;
  */
 abstract class SalesOrderManager implements SalesOrderManagerInterface {
 
-    protected $eventDispatcher;
+    protected $dispatcher;
     protected $fulfillmentAgreementClass;
     protected $paymentAgreementClass;
     protected $salesOrderClass;
@@ -82,6 +82,11 @@ abstract class SalesOrderManager implements SalesOrderManagerInterface {
 
     public function initItem(ItemInterface $salesOrder) {
 
+    }
+
+    public function setEventDispatcher($dispatcher) {
+
+        $this->dispatcher = $dispatcher;
     }
 
     public function setOrderState(OrderInterface $salesOrder, $state)

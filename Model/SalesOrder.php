@@ -65,6 +65,14 @@ abstract class SalesOrder extends CoreOrder
     /**
      * @inheritdoc
      */
+    public function getFulfillmentAgreement()
+    {
+        return $this->fulfillmentAgreement;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getOrderDate()
     {
         return $this->orderDate;
