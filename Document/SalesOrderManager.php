@@ -7,6 +7,7 @@
  */
 namespace Vespolina\OrderBundle\Document;
 
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Component\DependencyInjection\Container;
 
 use Vespolina\Entity\ItemInterface;
@@ -23,43 +24,13 @@ class SalesOrderManager extends BaseSalesOrderManager
     protected $primaryIdentifier;
     protected $salesOrderRepo;
 
-    public function __construct($container,
-                                $salesOrderClass = 'Vespolina\OrderBundle\Document\SalesOrder',
-                                $fulfillmentAgreementClass = 'Vespolina\OrderBundle\Document\FulfillmentAgreement',
-                                $paymentAgreementClass = 'Vespolina\OrderBundle\Document\PaymentAgreement'
-                                )
+    public function __construct(DocumentManager $dm, $salesOrderClass, $salesOrderItemClass, $fulfillmentAgreementClass, $paymentAgreementClass)
     {
-        $this->dm = $container->get('doctrine.odm.mongodb.default_document_manager');
-        $this->salesOrderRepo = $this->dm->getRepository('Vespolina\OrderBundle\Document\SalesOrder'); // TODO make configurable
+        $this->dm = $dm;
+        $this->salesOrderRepo = $this->dm->getRepository($salesOrderClass); // TODO make configurable
 
-        parent::__construct($container, $salesOrderClass, $fulfillmentAgreementClass, $paymentAgreementClass);
+        parent::__construct($salesOrderClass, $salesOrderItemClass, $fulfillmentAgreementClass, $paymentAgreementClass);
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function createSalesOrder($salesOrderType = 'default')
-    {
-        // TODO: this will be using factories to allow for a number of different types of SalesOrder classes
-        $salesOrder = new SalesOrder();
-        $this->init($salesOrder);
-
-        return $salesOrder;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function createItem(OrderInterface $salesOrder) {
-
-       $salesOrderItem = new SalesOrderItem();
-       $this->initItem($salesOrderItem);
-
-       $salesOrder->addItem($salesOrderItem);
-
-       return $salesOrderItem;
-    }
-
 
     /**
      * @inheritdoc
