@@ -9,8 +9,8 @@
 
 namespace Vespolina\OrderBundle\Model;
 
-use Vespolina\Entity\Item as CoreItem;
-use Vespolina\Entity\ItemInterface;
+use Vespolina\Entity\Order\Item as CoreItem;
+use Vespolina\Entity\Order\ItemInterface;
 use Vespolina\Entity\ProductInterface;
 
 /**
