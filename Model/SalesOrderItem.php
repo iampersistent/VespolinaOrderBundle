@@ -24,7 +24,6 @@ abstract class SalesOrderItem extends CoreItem
     protected $itemNumber;
     protected $itemState;
     protected $orderedQuantity;
-    protected $pricingSet;
     protected $product;
     protected $productName;
     protected $updatedAt;
@@ -34,7 +33,6 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function getCreatedAt()
     {
-
         return $this->createdAt;
     }
 
@@ -43,7 +41,6 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function getCustomerComment()
     {
-
         return $this->customerComment;
     }
 
@@ -52,7 +49,6 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function getCustomerProductReference()
     {
-
         return $this->customerProductReference;
     }
 
@@ -61,7 +57,6 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function getItemNumber()
     {
-
         return $this->itemNumber;
     }
 
@@ -70,7 +65,6 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function getItemState()
     {
-
         return $this->itemState;
     }
 
@@ -79,17 +73,7 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function getOrderedQuantity()
     {
-
         return $this->orderedQuantity;
-    }
-    
-    /**
-     * @inheritdoc
-     */
-    public function getPricingSet()
-    {
-
-        return $this->pricingSet;
     }
 
     /**
@@ -97,7 +81,6 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function getProductName()
     {
-
         return $this->productName;
     }
     
@@ -106,7 +89,6 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function getUpdatedAt()
     {
-
         return $this->updatedAt;
     }
 
@@ -115,20 +97,16 @@ abstract class SalesOrderItem extends CoreItem
      */
     public function setCustomerComment($customerComment)
     {
-
         $this->customerComment = $customerComment;
     }
-
 
     /**
      * @inheritdoc
      */
     public function setCustomerProductReference($customerProductReference)
     {
-
         $this->customerProductReference = $customerProductReference;
     }
-
 
     /**
      * @inheritdoc
@@ -152,14 +130,6 @@ abstract class SalesOrderItem extends CoreItem
     public function setOrderedQuantity($orderedQuantity)
     {
         $this->orderedQuantity = $orderedQuantity;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setPricingSet($pricingSet)
-    {
-        $this->pricingSet = $pricingSet;
     }
 
     /**
