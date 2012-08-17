@@ -14,7 +14,7 @@
 
     <services>
         <service id="vespolina_order.sales_order_manager" class="%vespolina_order.sales_order_manager.class%">
-            <argument type="service" id="doctrine.odm.mongodb.default_document_manager" />
+            <argument type="service" id="doctrine_mongodb.odm.default_document_manager" />
             <argument>%vespolina_order.model.sales_order.class%</argument>
             <argument>%vespolina_order.model.sales_order_item.class%</argument>
             <argument>%vespolina_order.model.fulfillment_agreement.class%</argument>
