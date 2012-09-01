@@ -24,7 +24,7 @@ class VespolinaOrderExtension extends Extension
         foreach (array('mongodb') as $basename) {
             $loader->load(sprintf('%s.xml', $basename));
         }
-
+        $loader->load('order.xml');
     }
 
     public function getNamespace()

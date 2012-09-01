@@ -5,15 +5,24 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="vespolina_sales_order.sales_order_manager.class">Vespolina\OrderBundle\Document\SalesOrderManager</parameter>
-        <parameter key="vespolina_sales_order.model.sales_order.class">Vespolina\OrderBundle\Document\SalesOrder</parameter>
-        <parameter key="vespolina_sales_order.model.sales_order_identifier_set.class">Vespolina\OrderBundle\Document\OrderIdentifierSet</parameter>
+        <parameter key="vespolina_order.sales_order_manager.class">Vespolina\OrderBundle\Document\SalesOrderManager</parameter>
+        <parameter key="vespolina_order.model.sales_order.class">Vespolina\OrderBundle\Document\SalesOrder</parameter>
+        <parameter key="vespolina_order.model.sales_order_item.class">Vespolina\OrderBundle\Document\SalesOrderItem</parameter>
+        <parameter key="vespolina_order.model.fulfillment_agreement.class">Vespolina\OrderBundle\Document\FulfillmentAgreement</parameter>
+        <parameter key="vespolina_order.model.payment_agreement.class">Vespolina\OrderBundle\Document\PaymentAgreement</parameter>
     </parameters>
 
     <services>
-        <service id="vespolina_sales_order.sales_order_manager" class="%vespolina_sales_order.sales_order_manager.class%">
-            <argument type="service" id="service_container" />
+        <service id="vespolina_order.sales_order_manager" class="%vespolina_order.sales_order_manager.class%">
+            <argument type="service" id="doctrine_mongodb.odm.default_document_manager" />
+            <argument>%vespolina_order.model.sales_order.class%</argument>
+            <argument>%vespolina_order.model.sales_order_item.class%</argument>
+            <argument>%vespolina_order.model.fulfillment_agreement.class%</argument>
+            <argument>%vespolina_order.model.payment_agreement.class%</argument>
+            <call method="setEventDispatcher">
+                <argument type="service" id="event_dispatcher"/>
+            </call>
         </service>
-        <service id="vespolina_sales_order.order_manager" alias="vespolina_sales_order.sales_order_manager" />
+        <service id="vespolina.sales_order_manager" alias="vespolina_order.sales_order_manager" />
     </services>
 </container>
