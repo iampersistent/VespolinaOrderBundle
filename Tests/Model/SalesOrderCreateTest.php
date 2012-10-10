@@ -23,7 +23,7 @@ class SalesOrderTest extends OrderTestCommon
         $salesOrder->setCustomer($this->createCustomer());
         $salesOrder->setOrderDate(new \DateTime());
         $salesOrder->setOrderState('awaiting_payment');
-        $salesOrder->setSalesChannel('webshop-foo.com');
+        $salesOrder->setChannel('webshop-foo.com');
 
 
         $paymentAgreement = $salesOrderManager->createPaymentAgreement();

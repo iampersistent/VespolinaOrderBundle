@@ -28,7 +28,7 @@ abstract class SalesOrder extends CoreOrder
     protected $orderState;
     protected $paymentAgreement;
     protected $pricingSet;
-    protected $salesChannel;
+    protected $channel;
     protected $updatedAt;
 
     public function __construct()
@@ -113,9 +113,9 @@ abstract class SalesOrder extends CoreOrder
     /**
      * @inheritdoc
      */
-    public function getSalesChannel()
+    public function getChannel()
     {
-        return $this->salesChannel;
+        return $this->channel;
     }
 
     /**
@@ -209,8 +209,8 @@ abstract class SalesOrder extends CoreOrder
     /**
      * @inheritdoc
      */
-    public function setSalesChannel($salesChannel)
+    public function setChannel($channel)
     {
-        $this->salesChannel = $salesChannel;
+        $this->channel = $channel;
     }
 }

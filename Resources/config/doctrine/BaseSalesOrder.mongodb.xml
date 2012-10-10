@@ -13,7 +13,7 @@
         <field name="customerId" fieldName="customerId" type="string" />
         <field name="orderDate" fieldName="orderDate" type="date" />
         <field name="orderState" fieldName="orderState" type="string" />
-        <field name="salesChannel" fieldName="salesChannel" type="string" />
+        <field name="channel" fieldName="channel" type="string" />
         <field name="type" fieldName="type" type="string" />
         <field name="updatedAt" fieldName="updatedAt" type="date" />
         <field name="pricingSetData" fieldName="pricingSetData" type="hash" />
