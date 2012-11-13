@@ -11,7 +11,7 @@ namespace Vespolina\OrderBundle\Model;
 
 use Vespolina\Entity\Order\Item as CoreItem;
 use Vespolina\Entity\Order\ItemInterface;
-use Vespolina\Entity\ProductInterface;
+use Vespolina\Entity\Product\ProductInterface;
 
 /**
  * @author Daniel Kucharski <daniel@xerias.be>

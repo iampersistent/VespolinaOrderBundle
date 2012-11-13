@@ -8,9 +8,10 @@
 
 namespace Vespolina\OrderBundle\Util;
 
-use Vespolina\Entity\ItemInterface;
-use Vespolina\Entity\ProductInterface;
-use Vespolina\Entity\OrderInterface;
+use Vespolina\Entity\Order\ItemInterface;
+use Vespolina\Entity\Order\CartInterface;
+use Vespolina\Entity\Product\ProductInterface;
+use Vespolina\Entity\Order\OrderInterface;
 use Vespolina\OrderBundle\Model\SalesOrderManagerInterface;
 
 /**
@@ -28,13 +29,13 @@ class SalesOrderManipulator
         $this->salesOrderManager = $salesOrderManager;
     }
 
-    public function createSalesOrderFromCart(OrderInterface $cart) {
+    public function createSalesOrderFromCart(CartInterface $cart) {
 
         $salesOrder = $this->salesOrderManager->createSalesOrder('default');
         $salesOrder->setCustomer($cart->getOwner());
         $salesOrder->setOrderDate(new \DateTime());
         $this->salesOrderManager->setOrderState($salesOrder, 'unprocessed');
-        $salesOrder->setPricingSet($cart->getPricingSet());
+        $salesOrder->setPricingSet($cart->getPricing());
 
         $fulfillmentAgreement = $this->salesOrderManager->createFulfillmentAgreement();
         $paymentAgreement = $this->salesOrderManager->createPaymentAgreement();
@@ -49,7 +50,7 @@ class SalesOrderManipulator
             foreach($cart->getItems() as $cartItem) {
 
                 $salesOrderItem = $this->salesOrderManager->addItemToSalesOrder($salesOrder, $cartItem->getProduct());
-                $salesOrderItem->setPricingSet($cartItem->getPricingSet());
+                $salesOrderItem->setPricing($cartItem->getPricing());
                 $this->salesOrderManager->setItemOrderedQuantity($salesOrderItem, $cartItem->getQuantity());
                 $this->salesOrderManager->setItemState($salesOrderItem, 'unprocessed');
             }
