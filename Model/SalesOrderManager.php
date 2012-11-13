@@ -9,9 +9,9 @@ namespace Vespolina\OrderBundle\Model;
 
 use Symfony\Component\DependencyInjection\Container;
 
-use Vespolina\Entity\ItemInterface;
-use Vespolina\Entity\OrderInterface;
-use Vespolina\Entity\ProductInterface;
+use Vespolina\Entity\Order\ItemInterface;
+use Vespolina\Entity\Order\OrderInterface;
+use Vespolina\Entity\Product\ProductInterface;
 use Vespolina\OrderBundle\Model\SalesOrderManagerInterface;
 
 /**

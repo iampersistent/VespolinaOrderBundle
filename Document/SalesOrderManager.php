@@ -10,8 +10,8 @@ namespace Vespolina\OrderBundle\Document;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Component\DependencyInjection\Container;
 
-use Vespolina\Entity\ItemInterface;
-use Vespolina\Entity\OrderInterface;
+use Vespolina\Entity\Order\ItemInterface;
+use Vespolina\Entity\Order\OrderInterface;
 use Vespolina\OrderBundle\Document\SalesOrder;
 use Vespolina\OrderBundle\Model\SalesOrderManager as BaseSalesOrderManager;
 /**
